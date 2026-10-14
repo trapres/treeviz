@@ -1,0 +1,5 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TreeViz</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><strong>Project tree</strong><input id="search" type="search" placeholder="Find a path…" aria-label="Find a path"><label><input id="changes" type="checkbox"> Changes only</label><button id="expand">Expand all</button><button id="collapse">Collapse all</button></header>
+<div id="legend"><span class="added">+ added</span><span class="deleted">− deleted</span><span class="modified">~ modified</span><span class="type_changed">↔ type changed</span><span class="unknown">? unknown / omitted</span></div>
+<p id="notice">Waiting for captured project structure…</p><div id="summary" aria-live="polite"></div><main id="tree" aria-label="Project directory tree"></main><script src="app.js"></script></body></html>
