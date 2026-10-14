@@ -70,12 +70,12 @@ function applyDocument(value) {
   render();
 }
 window.addEventListener('message', event => {
-  if (event.source !== parent || event.origin !== location.origin || event.data?.type !== 'labradour-scene') return;
+  if (event.source !== parent || event.data?.type !== 'labradour-scene') return;
   try { applyDocument(event.data.scene); } catch (error) { $('tree').replaceChildren(); $('notice').textContent = error.message; }
 });
 $('search').oninput = render; $('changes').onchange = render;
 $('expand').onclick = () => { collapsed.clear(); render(); };
 $('collapse').onclick = () => { collapsed = new Set((documentScene?.scene.nodes || []).filter(n => n.kind === 'directory').map(n => n.id)); render(); };
-parent.postMessage({type: 'treeviz-ready'}, location.origin);
+parent.postMessage({type: 'treeviz-ready'}, '*');
 // Standalone viewer: serve this directory and place a scene.json beside index.html.
 if (parent === window) fetch('scene.json').then(r => { if (!r.ok) throw new Error('Place scene.json beside the viewer to open a standalone tree.'); return r.json(); }).then(applyDocument).catch(e => { $('notice').textContent = e.message; });
